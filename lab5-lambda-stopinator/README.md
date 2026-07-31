@@ -22,7 +22,7 @@ except there's no server running in the background waiting to fire it.
 SDK) that stops a specific EC2 instance by ID. Filled in my actual region 
 (`us-east-1`) and the instance ID for `instance1`, then deployed.
 
-*(Screenshot pending: the function code deployed successfully in the Lambda console.)*
+![Code deployed successfully](screenshots/01-code-deployed.png)
 
 **Verify** — Checked the EC2 console after a minute and confirmed 
 `instance1` had flipped to "Stopped" automatically, with no manual action 

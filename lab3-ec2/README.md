@@ -6,24 +6,24 @@ protection.
 
 ## What I did
 
-**Launch the instance** — Launched a t2.micro instance named "Web Server"
+**Launch the instance** - Launched a t2.micro instance named "Web Server"
 running Amazon Linux 2023, using the vockey key pair, placed in the Lab
 VPC's public subnet. Created a new security group ("Web Server security
 group") with no default inbound rules, so nothing could reach it yet.
 Added a user data script that installs and starts Apache (httpd) and drops
-a "Hello From Your Web Server!" index.html on first boot — meaning the
+a "Hello From Your Web Server!" index.html on first boot - meaning the
 server is ready to serve a page the moment it launches, with zero manual
 setup after that.
 
 ![Instance running with passing status checks](screenshots/01-instance-running.png)
 
-**Monitor** — Checked the Status checks tab (both system and instance
+**Monitor** - Checked the Status checks tab (both system and instance
 checks passed), the Monitoring tab (CloudWatch metrics, sparse since the
 instance was freshly launched), and pulled the system log and an instance
 screenshot from the Actions menu, useful ways to inspect a running instance
 without connecting to it directly.
 
-**Test the security group** — Copied the instance's public IPv4 address and
+**Test the security group** - Copied the instance's public IPv4 address and
 tried loading it in a browser. It failed to connect, timing out, even
 though the server was already running and serving content. This is because
 the security group I created had no inbound rules, so it was blocking every
@@ -37,7 +37,7 @@ immediately.
 
 ![Site working after adding the HTTP inbound rule](screenshots/03-site-working.png)
 
-**Resize the instance** — Stopped the instance, changed its instance type
+**Resize the instance** - Stopped the instance, changed its instance type
 from t2.micro to t2.small, enabled stop protection, then resized the root
 EBS volume from 8 GiB to 10 GiB using the Storage tab's Modify volume
 option, and restarted it. Volume resizing on EBS can be done live without
@@ -45,11 +45,11 @@ recreating the volume.
 
 ![Instance after type change and volume resize](screenshots/04-resized-instance.png)
 
-**Check service quotas** — Looked at EC2's Service Quotas page, searching
+**Check service quotas** - Looked at EC2's Service Quotas page, searching
 for "running on-demand" limits, a reminder that AWS accounts have default
 caps on how many resources you can run at once, adjustable by request.
 
-**Test stop protection** — Tried stopping the instance again and got a
+**Test stop protection** - Tried stopping the instance again and got a
 "Failed to stop the instance" error, since stop protection was still
 enabled. This confirms the protection setting actually works, it's not
 just a checkbox with no effect.
